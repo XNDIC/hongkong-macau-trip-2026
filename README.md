@@ -24,3 +24,5 @@ GitHub Pages：<https://xndic.github.io/hongkong-macau-trip-2026/>
 
 页面视觉基于 `do-tongxue/Travel-Plan-Page` 的设计语言继续扩展。原项目许可证及第三方说明见 `LICENSE` 与 `THIRD_PARTY_NOTICES.md`。
 
+部署方式：GitHub Actions（静态站点）。
+

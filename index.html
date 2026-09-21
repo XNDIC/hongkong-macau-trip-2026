@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f6f2">
+  <meta name="description" content="2026 国庆香港澳门 6 天 5 晚双人规划页：真实地形地图、逐日路线、景点取舍、三档预算与待确认事项。">
+  <title>港澳 6 天 5 晚｜规划版 V3</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2313262f'/%3E%3Cpath d='M17 42 29 15l6 16 13-8-9 26-7-15z' fill='%238fc6d0'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23f3f6f2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://commons.wikimedia.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="wordmark" href="#top">HK × MO <span>／规划版 V3</span></a>
+    <nav aria-label="页面导航">
+      <a href="#map">地图</a>
+      <a href="#days">行程</a>
+      <a href="#spots">取舍</a>
+      <a href="#budget">预算</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="trip-title">
+      <div class="hero__media" aria-hidden="true">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hong_Kong_Night_Skyline.jpg?width=1800" alt="" fetchpriority="high">
+      </div>
+      <div class="hero__shade"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">2 PEOPLE · 6 DAYS · GOLDEN WEEK</p>
+        <h1 id="trip-title">香港 × 澳门<br>先选，再出发</h1>
+        <p class="hero__date">2026.10.02 — 10.07 · 香港 3 晚 + 澳门 2 晚</p>
+        <div class="hero__actions">
+          <a class="button button--light" href="#days">从每日方案开始</a>
+          <button class="button button--ghost" id="print-plan" type="button">保存 / 打印</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="旅行概况">
+      <article><span>同行</span><strong>2 人 · 双床房</strong></article>
+      <article><span>出发</span><strong>成都 + 长沙</strong></article>
+      <article><span>节奏</span><strong>09:00 后 · 不排满</strong></article>
+      <article><span>偏好</span><strong>经典 + 文艺 + 拍照</strong></article>
+    </section>
+
+    <section class="section pending-section" aria-labelledby="pending-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">DECISIONS FIRST</p>
+          <h2 id="pending-title">先锁定这 4 件事</h2>
+        </div>
+        <span class="soft-label">4 项待确认</span>
+      </div>
+      <div class="pending-grid">
+        <article class="pending-card">
+          <div class="pending-card__top"><span>01</span><b>待确认</b></div>
+          <h3>成都 → 香港</h3>
+          <p>10 月 2 日航班与抵港时间未定。目标：中午前后抵港，避免压缩第一晚维港路线。</p>
+        </article>
+        <article class="pending-card">
+          <div class="pending-card__top"><span>02</span><b>待确认</b></div>
+          <h3>长沙 → 香港</h3>
+          <p>10 月 2 日航班与会合时间未定。两人可直接在香港酒店或尖沙咀会合。</p>
+        </article>
+        <article class="pending-card">
+          <div class="pending-card__top"><span>03</span><b>待确认</b></div>
+          <h3>香港 / 澳门酒店</h3>
+          <p>香港优先佐敦—油麻地；澳门优先新马路—葡京。1 间双床房，共住 5 晚。</p>
+        </article>
+        <article class="pending-card">
+          <div class="pending-card__top"><span>04</span><b>待确认</b></div>
+          <h3>10 月 7 日返程</h3>
+          <p>返程城市、口岸和时间未定。Day 6 保留弹性，路环之后按车票 / 航班收尾。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section map-section" id="map" aria-labelledby="map-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">REAL TERRAIN · OVERVIEW</p>
+          <h2 id="map-title">港澳真实地形总览</h2>
+        </div>
+        <span class="soft-label">可缩放 / 可切换</span>
+      </div>
+      <div class="map-toolbar" role="group" aria-label="地图范围">
+        <button class="map-filter is-active" type="button" data-map-view="all">港澳全线</button>
+        <button class="map-filter" type="button" data-map-view="hk">香港总览</button>
+        <button class="map-filter" type="button" data-map-view="mo">澳门总览</button>
+      </div>
+      <div class="map-shell">
+        <div id="trip-map" role="application" aria-label="香港澳门交互地形地图"></div>
+        <div class="map-legend" aria-hidden="true"><span class="legend-dot legend-dot--hk"></span>香港 <span class="legend-dot legend-dot--mo"></span>澳门 <span class="legend-line"></span>规划顺序</div>
+      </div>
+      <p class="route-caption">地形底图来自 OpenTopoMap；折线表达游玩顺序，不代表实际公共交通轨迹。点开标记可直接导航。</p>
+      <noscript><p class="no-script">启用 JavaScript 后可查看交互地图。路线顺序仍可在下方每日计划中阅读。</p></noscript>
+    </section>
+
+    <section class="section days-section" id="days" aria-labelledby="days-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">DAY BY DAY</p>
+          <h2 id="days-title">每天留出呼吸感</h2>
+        </div>
+        <span class="soft-label">1 天 1 个主线</span>
+      </div>
+      <div class="day-tabs" id="day-tabs" role="tablist" aria-label="选择日期"></div>
+      <div id="day-panel" aria-live="polite"></div>
+    </section>
+
+    <section class="section spots-section" id="spots" aria-labelledby="spots-title">
+      <div class="section-heading section-heading--wide">
+        <div>
+          <p class="section-kicker">KEEP OR CUT</p>
+          <h2 id="spots-title">景点不是越多越好</h2>
+        </div>
+        <p class="heading-note">优先保留有城市辨识度、适合第一次到访且能拍出差异的地点。</p>
+      </div>
+      <div class="filter-row" id="spot-filters" role="group" aria-label="筛选景点">
+        <button class="chip is-active" type="button" data-spot-filter="all">全部</button>
+        <button class="chip" type="button" data-spot-filter="must">建议保留</button>
+        <button class="chip" type="button" data-spot-filter="optional">可删 / 二选一</button>
+        <button class="chip" type="button" data-spot-filter="rain">雨天友好</button>
+      </div>
+      <div class="spot-grid" id="spot-grid"></div>
+    </section>
+
+    <section class="section budget-section" id="budget" aria-labelledby="budget-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">TWO-PERSON BUDGET</p>
+          <h2 id="budget-title">三档预算，先看取舍</h2>
+        </div>
+        <span class="soft-label">不含内地往返</span>
+      </div>
+      <div class="budget-switch" id="budget-switch" role="group" aria-label="选择人均预算"></div>
+      <div class="budget-card" id="budget-card" aria-live="polite"></div>
+      <p class="budget-note">黄金周酒店价格波动最大。预算是规划上限，不是实时房价；航班、酒店确定后应重新核算。</p>
+    </section>
+
+    <section class="section lodging-section" id="stay" aria-labelledby="stay-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">WHERE TO STAY</p>
+          <h2 id="stay-title">住宿范围，比酒店名更先决定</h2>
+        </div>
+        <span class="soft-label">1 间双床房</span>
+      </div>
+      <div class="stay-grid">
+        <article class="stay-card stay-card--hk">
+          <div><span>香港 · 3 晚</span><b>优先</b></div>
+          <h3>佐敦 / 油麻地</h3>
+          <p>地铁串联尖沙咀、港岛与西九，晚间可步行去庙街；通常比中环、尖沙咀核心更适合学生预算。</p>
+          <ul><li>筛选：双床、独立卫浴、近 MTR</li><li>避开：只看低价、忽略房间面积和卫生评价</li></ul>
+          <a href="https://www.google.com/maps/search/?api=1&query=Jordan+Hong+Kong+hotels" target="_blank" rel="noopener">在地图查看区域 ↗</a>
+        </article>
+        <article class="stay-card stay-card--mo">
+          <div><span>澳门 · 2 晚</span><b>优先</b></div>
+          <h3>新马路 / 葡京</h3>
+          <p>老城路线可步行，去外港码头与路氹也方便；不必为住进综合度假区消耗学生预算。</p>
+          <ul><li>筛选：双床、公交方便、可寄存行李</li><li>备选：皇朝 / 外港码头一带</li></ul>
+          <a href="https://www.google.com/maps/search/?api=1&query=San+Ma+Lo+Macau+hotels" target="_blank" rel="noopener">在地图查看区域 ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section rules-section" aria-labelledby="rules-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">GOLDEN WEEK RULES</p>
+          <h2 id="rules-title">黄金周只记 5 条</h2>
+        </div>
+        <span class="soft-label">2026.10.02—10.07</span>
+      </div>
+      <ol class="rule-list">
+        <li><b>热门点只抢一个早晨。</b><span>太平山 09:00 前后到；大三巴安排 08:20，其他天不硬早起。</span></li>
+        <li><b>山顶缆车不是必选。</b><span>排队明显超过 45 分钟，就改巴士上山，把时间留给山顶本身。</span></li>
+        <li><b>香港 → 澳门船票先锁。</b><span>10 月 5 日上午班次优先；具体码头与票价以购票时为准。</span></li>
+        <li><b>室内馆只选一个付费主馆。</b><span>香港故宫与 M+ 按兴趣二选一，另一处只看免费空间和建筑外景。</span></li>
+        <li><b>下雨就换顺序，不加行程。</b><span>K11、M+ / 香港故宫、澳门综合度假区承担雨天 Plan B。</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>港澳规划版 V3</strong> · 2 人学生旅行 · 航班与酒店待确认</p>
+    <p>地形地图 © OpenStreetMap contributors / OpenTopoMap；景点照片来自 Wikimedia Commons，作者与许可见各图片“来源”链接。</p>
+    <a href="#top">回到顶部 ↑</a>
+  </footer>
+</body>
+</html>
+
